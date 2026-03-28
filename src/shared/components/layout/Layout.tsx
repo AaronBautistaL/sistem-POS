@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useStore } from '../../../infrastructure/store/useStore';
 import { useFullscreen } from '../../hooks/useFullscreen';
@@ -19,6 +19,11 @@ export default function Layout() {
   const lowStockCount = products.filter(p => p.stock <= p.minStock).length;
   const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.toggle('light', !isDark);
+  }, [isDark]);
 
   const { isFullscreen, showRestoreBanner, toggleFullscreen, dismissBanner } = useFullscreen();
   const { canInstall, isStandalone, promptInstall } = usePWA();
@@ -56,9 +61,11 @@ export default function Layout() {
           isStandalone={!!isStandalone}
           canInstall={canInstall}
           lowStockCount={lowStockCount}
+          isDark={isDark}
           onToggleMobile={() => setMobileOpen(!mobileOpen)}
           onToggleFullscreen={toggleFullscreen}
           onInstall={promptInstall}
+          onToggleTheme={() => setIsDark(d => !d)}
         />
 
         {showRestoreBanner && !isStandalone && (

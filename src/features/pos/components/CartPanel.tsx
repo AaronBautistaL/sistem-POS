@@ -36,7 +36,7 @@ export function CartPanel({
   const change = Math.max(0, paid - total);
 
   return (
-    <div className="w-80 flex-shrink-0 flex flex-col rounded-xl border overflow-hidden"
+    <div className="w-[28rem] flex-shrink-0 flex flex-col rounded-xl border overflow-hidden"
       style={{ background: 'var(--color-surface-2)', borderColor: 'var(--color-border)' }}>
       {/* Header */}
       <div className="p-4 border-b flex items-center gap-2" style={{ borderColor: 'var(--color-border)' }}>

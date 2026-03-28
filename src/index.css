@@ -28,6 +28,15 @@ body {
   font-family: var(--font-sans);
 }
 
+body.light {
+  --color-surface: #f1f5f9;
+  --color-surface-2: #ffffff;
+  --color-surface-3: #e2e8f0;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #cbd5e1;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

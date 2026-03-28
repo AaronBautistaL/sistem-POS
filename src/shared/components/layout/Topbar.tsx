@@ -1,16 +1,18 @@
-import { Menu, Search, Bell, Download, Maximize2, Minimize2 } from 'lucide-react';
+import { Menu, Search, Bell, Download, Maximize2, Minimize2, Sun, Moon } from 'lucide-react';
 
 interface Props {
   isFullscreen: boolean;
   isStandalone: boolean;
   canInstall: boolean;
   lowStockCount: number;
+  isDark: boolean;
   onToggleMobile: () => void;
   onToggleFullscreen: () => void;
   onInstall: () => void;
+  onToggleTheme: () => void;
 }
 
-export function Topbar({ isFullscreen, isStandalone, canInstall, lowStockCount, onToggleMobile, onToggleFullscreen, onInstall }: Props) {
+export function Topbar({ isFullscreen, isStandalone, canInstall, lowStockCount, isDark, onToggleMobile, onToggleFullscreen, onInstall, onToggleTheme }: Props) {
   return (
     <header className="h-16 flex items-center gap-4 px-4 border-b border-[var(--color-border)]" style={{ background: 'var(--color-surface-2)' }}>
       <button className="lg:hidden p-2 rounded-lg hover:bg-[var(--color-surface-3)]" onClick={onToggleMobile}>
@@ -25,7 +27,14 @@ export function Topbar({ isFullscreen, isStandalone, canInstall, lowStockCount, 
         </div>
       </div>
       <div className="ml-auto flex items-center gap-2">
-        {!isStandalone && (
+        <button onClick={onToggleTheme}
+            className="p-2 rounded-lg hover:bg-[var(--color-surface-3)] transition-colors"
+            title={isDark ? 'Modo claro' : 'Modo oscuro'}>
+            {isDark
+              ? <Sun size={20} style={{ color: 'var(--color-text-muted)' }} />
+              : <Moon size={20} style={{ color: 'var(--color-text-muted)' }} />}
+          </button>
+          {!isStandalone && (
           <button onClick={onToggleFullscreen}
             className="p-2 rounded-lg hover:bg-[var(--color-surface-3)] transition-colors"
             title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}>

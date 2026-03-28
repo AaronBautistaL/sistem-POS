@@ -35,7 +35,7 @@ export default function POSPage() {
   }
 
   if (lastSale) {
-    return <ReceiptScreen sale={lastSale} sym={sym} taxRate={settings.taxRate} receiptFooter={settings.receiptFooter} onNewSale={() => setLastSale(null)} />;
+    return <ReceiptScreen sale={lastSale} sym={sym} taxRate={settings.taxRate} receiptFooter={settings.receiptFooter} settings={settings} onNewSale={() => setLastSale(null)} />;
   }
 
   return (

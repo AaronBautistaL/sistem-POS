@@ -1,4 +1,4 @@
-import type { Product, Customer, Sale } from '../types';
+import type { Product, Customer, Sale } from '../core/types';
 
 export const mockProducts: Product[] = [
   { id: 'p1', name: 'Coca-Cola 600ml', sku: 'BEB001', category: 'Bebidas', price: 20, cost: 12, stock: 48, minStock: 10, unit: 'pza', barcode: '750100000001' },
